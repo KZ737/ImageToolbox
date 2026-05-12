@@ -23,7 +23,7 @@ plugins {
 }
 
 android {
-    val supportedAbi = arrayOf("armeabi-v7a", "arm64-v8a", "x86_64")
+    val supportedAbi = arrayOf("arm64-v8a")
 
     namespace = "com.t8rin.imagetoolbox"
 
@@ -31,7 +31,7 @@ android {
         vectorDrawables.useSupportLibrary = true
 
         //Maintained for compatibility with old version
-        applicationId = "ru.tech.imageresizershrinker"
+        applicationId = "ru.tech.imageresizershrinker.z737fork"
 
         versionCode = libs.versions.versionCode.get().toIntOrNull()
         versionName = System.getenv("VERSION_NAME") ?: libs.versions.versionName.get()
@@ -50,11 +50,6 @@ android {
     flavorDimensions += "app"
 
     productFlavors {
-        create("foss") {
-            dimension = "app"
-            versionNameSuffix = "-foss"
-            extra.set("gmsEnabled", false)
-        }
         create("market") {
             dimension = "app"
             extra.set("gmsEnabled", true)
