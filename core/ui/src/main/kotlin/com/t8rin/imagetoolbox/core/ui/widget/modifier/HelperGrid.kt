@@ -41,7 +41,9 @@ data class HelperGridParams(
     val cellHeight: Float = 20f,
     val linesWidth: Float = 0f,
     val enabled: Boolean = false,
-    val withPrimaryLines: Boolean = false
+    val withPrimaryLines: Boolean = false,
+    val xShift: Float = 0f,
+    val yShift: Float = 0f
 )
 
 fun Modifier.drawHelperGrid(
@@ -58,6 +60,8 @@ fun Modifier.drawHelperGrid(
 
         val cellWidthPx = cellWidth.pt.toPx(canvasSize)
         val cellHeightPx = cellHeight.pt.toPx(canvasSize)
+        val xShiftPx = xShift.pt.toPx(canvasSize)
+        val yShiftPx = yShift.pt.toPx(canvasSize)
 
         val linesWidthPx = linesWidth.pt.toPx(canvasSize)
 
@@ -73,8 +77,8 @@ fun Modifier.drawHelperGrid(
                 for (x in 0..horizontalSteps) {
                     drawLine(
                         color = composeColor,
-                        start = Offset(x = x * cellWidthPx, y = 0f),
-                        end = Offset(x = x * cellWidthPx, y = height),
+                        start = Offset(x = x * cellWidthPx + xShiftPx, y = 0f),
+                        end = Offset(x = x * cellWidthPx + xShiftPx, y = height),
                         strokeWidth = if (x % 5 == 0 && x != 0 && withPrimaryLines) {
                             if (linesWidthPx == 0f) 2f else linesWidthPx * 2
                         } else {
@@ -86,8 +90,8 @@ fun Modifier.drawHelperGrid(
                 for (y in 0..verticalSteps) {
                     drawLine(
                         color = composeColor,
-                        start = Offset(x = 0f, y = y * cellHeightPx),
-                        end = Offset(x = width, y = y * cellHeightPx),
+                        start = Offset(x = 0f, y = y * cellHeightPx + yShiftPx),
+                        end = Offset(x = width, y = y * cellHeightPx + yShiftPx),
                         strokeWidth = if (y % 5 == 0 && y != 0 && withPrimaryLines) {
                             if (linesWidthPx == 0f) 2f else linesWidthPx * 2
                         } else {

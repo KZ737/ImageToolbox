@@ -133,6 +133,22 @@ fun HelperGridParamsSelector(
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
                 EnhancedSliderItem(
+                    value = value.xShift,
+                    title = stringResource(R.string.offset_x),
+                    icon = Icons.Outlined.ViewColumn,
+                    internalStateTransformation = {
+                        it.roundToTwoDigits()
+                    },
+                    valueSuffix = " Pt",
+                    shape = ShapeDefaults.center,
+                    onValueChange = {
+                        onValueChange(value.copy(xShift = it))
+                    },
+                    valueRange = 0f..100f,
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                )
+                EnhancedSliderItem(
                     value = value.cellHeight,
                     title = stringResource(R.string.cell_height),
                     icon = Icons.Outlined.TableRows,
@@ -145,6 +161,22 @@ fun HelperGridParamsSelector(
                         onValueChange(value.copy(cellHeight = it))
                     },
                     valueRange = 1f..100f,
+                    containerColor = MaterialTheme.colorScheme.surface,
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                )
+                EnhancedSliderItem(
+                    value = value.yShift,
+                    title = stringResource(R.string.offset_y),
+                    icon = Icons.Outlined.TableRows,
+                    internalStateTransformation = {
+                        it.roundToTwoDigits()
+                    },
+                    valueSuffix = " Pt",
+                    shape = ShapeDefaults.center,
+                    onValueChange = {
+                        onValueChange(value.copy(yShift = it))
+                    },
+                    valueRange = 0f..100f,
                     containerColor = MaterialTheme.colorScheme.surface,
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
