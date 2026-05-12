@@ -144,7 +144,7 @@ fun HelperGridParamsSelector(
                     onValueChange = {
                         onValueChange(value.copy(xShift = it))
                     },
-                    valueRange = 0f..100f,
+                    valueRange = 0f..value.cellWidth,
                     containerColor = MaterialTheme.colorScheme.surface,
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
@@ -176,7 +176,7 @@ fun HelperGridParamsSelector(
                     onValueChange = {
                         onValueChange(value.copy(yShift = it))
                     },
-                    valueRange = 0f..100f,
+                    valueRange = 0f..value.cellHeight,
                     containerColor = MaterialTheme.colorScheme.surface,
                     modifier = Modifier.padding(horizontal = 8.dp)
                 )
