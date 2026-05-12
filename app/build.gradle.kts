@@ -50,6 +50,11 @@ android {
     flavorDimensions += "app"
 
     productFlavors {
+        create("foss") {
+            dimension = "app"
+            versionNameSuffix = "-foss"
+            extra.set("gmsEnabled", false)
+        }
         create("market") {
             dimension = "app"
             extra.set("gmsEnabled", true)
